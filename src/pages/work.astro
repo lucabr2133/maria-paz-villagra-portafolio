@@ -261,6 +261,11 @@ import WhatsAppIcon from '../components/icons/whatsapp.astro';
 		}, 150);
 	}
 
+	if (document.readyState === "loading") {
+		document.addEventListener("DOMContentLoaded", initWorkAnimations);
+	} else {
+		initWorkAnimations();
+	}
 	document.addEventListener("astro:page-load", initWorkAnimations);
 	document.addEventListener("astro:before-swap", () => {
 		ScrollTrigger.getAll().forEach((trigger) => trigger.kill());

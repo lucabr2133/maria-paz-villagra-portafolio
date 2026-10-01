@@ -291,7 +291,7 @@ const { project } = Astro.props;
 
 	gsap.registerPlugin(ScrollTrigger);
 
-	document.addEventListener("astro:page-load", () => {
+	function initSlugAnimations() {
 		// Limpieza de triggers previos al cambiar de página
 		ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
 
@@ -354,8 +354,20 @@ const { project } = Astro.props;
 			});
 		}
 
-		ScrollTrigger.refresh();
-	});
+		requestAnimationFrame(() => {
+			ScrollTrigger.refresh();
+		});
+		setTimeout(() => {
+			ScrollTrigger.refresh();
+		}, 150);
+	}
+
+	if (document.readyState === "loading") {
+		document.addEventListener("DOMContentLoaded", initSlugAnimations);
+	} else {
+		initSlugAnimations();
+	}
+	document.addEventListener("astro:page-load", initSlugAnimations);
 
 	document.addEventListener("astro:before-swap", () => {
 		ScrollTrigger.getAll().forEach((trigger) => trigger.kill());

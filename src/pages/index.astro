@@ -43,11 +43,11 @@ import WhatsAppIcon from '../components/icons/whatsapp.astro';
 
 			<div class="w-full flex flex-col md:pl-24 lg:pl-40 relative z-10">
 				<h1 class="font-sans font-black leading-[0.85] tracking-tighter uppercase flex flex-col">
-					<div class="hero-parallax-wrapper overflow-hidden"><span class="hero-text-line block text-[15vw] md:text-[12vw] origin-bottom-left will-change-transform opacity-0 text-[#a20007]">Paz</span></div>
-					<div class="hero-parallax-wrapper overflow-hidden"><span class="hero-text-line block text-[15vw] md:text-[12vw] origin-bottom-left will-change-transform opacity-0 text-[#a20007]">Villagra</span></div>
+					<div class="hero-parallax-wrapper overflow-hidden"><span class="hero-text-line block text-[15vw] md:text-[12vw] origin-bottom-left will-change-transform text-[#a20007]">Paz</span></div>
+					<div class="hero-parallax-wrapper overflow-hidden"><span class="hero-text-line block text-[15vw] md:text-[12vw] origin-bottom-left will-change-transform text-[#a20007]">Villagra</span></div>
 				</h1>
 				
-				<div class="hero-desc will-change-transform opacity-0 mt-8 flex flex-col md:flex-row items-start md:items-center gap-8">
+				<div class="hero-desc will-change-transform mt-8 flex flex-col md:flex-row items-start md:items-center gap-8">
 					<p class="max-w-sm text-black/80 text-sm md:text-base leading-relaxed md:ml-2 font-medium">
 						Estudiante de Diseño Gráfico, creativa y con interés en la comunicación visual, buscando que cada proyecto tenga una identidad propia.
 					</p>
@@ -270,7 +270,7 @@ import WhatsAppIcon from '../components/icons/whatsapp.astro';
 
 	gsap.registerPlugin(ScrollTrigger);
 
-	document.addEventListener("astro:page-load", () => {
+	function initHomePage() {
 		// Clean up any stale ScrollTriggers
 		ScrollTrigger.getAll().forEach(t => t.kill());
 
@@ -302,7 +302,7 @@ import WhatsAppIcon from '../components/icons/whatsapp.astro';
 		// Animación de los Títulos de Sección
 		gsap.utils.toArray(".section-title").forEach((title: any) => {
 			gsap.fromTo(title, 
-				{ y: 60, opacity: 0 },
+				{ y: 40, opacity: 0 },
 				{
 					y: 0,
 					opacity: 1,
@@ -321,7 +321,7 @@ import WhatsAppIcon from '../components/icons/whatsapp.astro';
 		const projects = gsap.utils.toArray(".project-card");
 		projects.forEach((project: any) => {
 			gsap.fromTo(project, 
-				{ y: 60, opacity: 0 },
+				{ y: 40, opacity: 0 },
 				{
 					y: 0,
 					opacity: 1,
@@ -350,14 +350,20 @@ import WhatsAppIcon from '../components/icons/whatsapp.astro';
 		});
 
 		// Refresh triggers dynamically when DOM/images settle
+		requestAnimationFrame(() => {
+			ScrollTrigger.refresh();
+		});
 		setTimeout(() => {
 			ScrollTrigger.refresh();
-		}, 100);
+		}, 150);
+	}
 
-		window.addEventListener("load", () => {
-			ScrollTrigger.refresh();
-		}, { once: true });
-	});
+	if (document.readyState === "loading") {
+		document.addEventListener("DOMContentLoaded", initHomePage);
+	} else {
+		initHomePage();
+	}
+	document.addEventListener("astro:page-load", initHomePage);
 </script>
 
 

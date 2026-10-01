@@ -1,7 +1,6 @@
 ---
 import '../styles/global.css';
 import SmoothScroll from '../components/SmoothScroll.tsx';
-import { ClientRouter } from 'astro:transitions';
 
 interface Props {
 	title?: string;
@@ -17,7 +16,6 @@ const {
 <!doctype html>
 <html lang="es">
 	<head>
-		<ClientRouter />
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -47,7 +45,7 @@ const {
 	<script>
 	import gsap from "gsap";
 
-	document.addEventListener("astro:page-load", () => {
+	function initGlobalLayout() {
 		// --- Global Glow Orb ---
 		const glow = document.getElementById('global-glow');
 		if (glow) {
@@ -149,7 +147,14 @@ const {
 				}
 			});
 		}
-	});
+	}
+
+	if (document.readyState === "loading") {
+		document.addEventListener("DOMContentLoaded", initGlobalLayout);
+	} else {
+		initGlobalLayout();
+	}
+	document.addEventListener("astro:page-load", initGlobalLayout);
 </script>
 </body>
 </html>
