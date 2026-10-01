@@ -1,0 +1,19 @@
+---
+const props = Astro.props;
+---
+<svg {...props} viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="40" cy="40" r="40" fill="#7D2AE7"/>
+  <circle cx="40" cy="40" r="40" fill="url(#canva_grad1)"/>
+  <circle cx="40" cy="40" r="40" fill="url(#canva_grad2)"/>
+  <path d="M57.27 48.21C56.94 48.21 56.65 48.48 56.35 49.09C52.93 56.02 47.04 60.91 40.21 60.91C32.32 60.91 27.44 53.79 27.44 43.95C27.44 27.29 36.72 17.65 44.88 17.65C48.69 17.65 51.02 20.04 51.02 23.86C51.02 28.38 48.45 30.77 48.45 32.37C48.45 33.09 48.89 33.52 49.78 33.52C53.33 33.52 57.49 29.44 57.49 23.68C57.49 18.09 52.63 13.99 44.47 13.99C30.99 13.99 19.01 26.49 19.01 43.78C19.01 57.16 26.66 66.01 38.45 66.01C50.97 66.01 58.2 53.55 58.2 49.51C58.2 48.62 57.75 48.21 57.27 48.21Z" fill="white"/>
+  <defs>
+    <radialGradient id="canva_grad1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(21.18 9.09) rotate(54.7) scale(69.77)">
+      <stop stop-color="#00C4CC"/>
+      <stop offset="1" stop-color="#00C4CC" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="canva_grad2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(15.45 70.91) rotate(-49.42) scale(61.87)">
+      <stop stop-color="#6420FF"/>
+      <stop offset="1" stop-color="#6420FF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+</svg>

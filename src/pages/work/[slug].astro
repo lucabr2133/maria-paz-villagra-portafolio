@@ -1,0 +1,386 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CanvaIcon from '../../components/icons/canva.astro';
+import IllustratorIcon from '../../components/icons/illustrator.astro';
+import PhotoshopIcon from '../../components/icons/photoshop.astro';
+
+export function getStaticPaths() {
+	const projects = [
+		{
+			slug: 'youknow-tour',
+			title: 'YouKnow',
+			category: 'Afiche y vinilo',
+			year: '2026',
+			type: 'Universitario',
+			tools: 'Illustrator, Photoshop, Canva',
+			coverImage: '/portfolio/YouKnow Tour (1).png',
+			images: [
+				'/portfolio/YouKnow Tour.png',
+				'/portfolio/YouKnow Tour (2).png'
+			],
+			description: 'Desarrollé una propuesta gráfica para una gira musical que incluye un afiche para la vía pública y el diseño de la portada de un vinilo. Trabajé con fotografía, tipografía y una paleta de colores común para dar coherencia a ambas piezas.',
+		},
+		{
+			slug: 'cosalta',
+			title: 'Cosalta',
+			category: 'Rediseño de envases',
+			year: '2026',
+			type: 'Universitario',
+			tools: 'Illustrator, Canva',
+			coverImage: '/portfolio/Cosalta (2).png',
+			images: [
+				'/portfolio/Cosalta (1).png',
+				'/portfolio/Cosalta.png'
+			],
+			description: 'Rediseñé los envases de Cosalta para actualizar su identidad visual. Definí una propuesta de tipografía, colores y elementos gráficos que mantiene la coherencia entre los productos y permite distinguir cada variedad.',
+		},
+		{
+			slug: 'protectores-noa',
+			title: 'Protectores del NOA',
+			category: 'Diseño Editorial y Branding',
+			year: '2025',
+			type: 'Universitario',
+			tools: 'Adobe Illustrator',
+			coverImage: '/portfolio/protectoresNoa1.jpeg',
+			images: [
+				'/portfolio/protectoresNoa2.jpeg',
+				'/portfolio/protectoresNoa3.jpeg',
+				'/portfolio/protectoresNoa4.jpeg'
+			],
+			description: 'Diseñé un juego de mesa educativo basado en las tres R: reducir, reutilizar y reciclar. A través de preguntas y desafíos, el juego invita a aprender sobre el cuidado del ambiente y los biomas del NOA de forma participativa.',
+		},
+		{
+			slug: 'tijuana',
+			title: 'Tijuana Showroom',
+			category: 'Diseño de logo',
+			year: '2025',
+			type: 'Cliente',
+			tools: 'Adobe Illustrator',
+			coverImage: '/portfolio/tijuana.jpeg',
+			images: [
+				'/portfolio/tijuana2.jpeg'
+			],
+			description: 'Diseñé el logo de Tijuana Showroom para darle al emprendimiento una identidad propia y reconocible. El trabajo incluye las aplicaciones del logo en cartelería, tarjetas y etiquetas.',
+		},
+		{
+			slug: 'majo-marketing',
+			title: 'Majo',
+			category: 'Creación de marca',
+			year: '2025',
+			type: 'Cliente',
+			tools: 'Illustrator y Canva',
+			coverImage: '/portfolio/proj5.jpg',
+			images: [
+				'/portfolio/Majo1.jpeg',
+				'/portfolio/majo2.jpeg',
+				'/portfolio/majo3.jpeg'
+			],
+			description: 'Desarrollé la identidad visual de Majo, una marca de marketing estratégico y branding. Diseñé el logotipo principal y sus variaciones, definí una paleta cromática y apliqué la identidad a la papelería institucional.',
+		},
+		{
+			slug: 'traccion-norte',
+			title: 'Tracción Norte',
+			category: 'Identidad de marca',
+			year: '2026',
+			type: 'Universitario',
+			tools: 'Illustrator, Photoshop, Canva',
+			coverImage: '/portfolio/A3.png',
+			images: [
+				'/portfolio/A3 (1).png'
+			],
+			description: 'Rediseñé el logo y desarrollé la personalidad visual de Tracción Norte para comunicar su vínculo con el mountain bike, la aventura y los paisajes del norte argentino.',
+		},
+		{
+			slug: 'bunker',
+			title: 'Bunker',
+			category: 'Diseño para redes sociales',
+			year: '2026',
+			type: 'Universitario',
+			tools: 'Canva',
+			coverImage: '/portfolio/bunkerOwl.png',
+			images: [
+				'/portfolio/bunkerOwl2.png'
+			],
+			description: 'Diseño de una serie de placas para el feed de Instagram de Bunker, destinadas a comunicar su aniversario y promocionar el evento.',
+		}
+	];
+	
+	return projects.map((project) => ({
+		params: { slug: project.slug },
+		props: { project },
+	}));
+}
+
+const { project } = Astro.props;
+---
+
+<Layout title={project.title + " | Maria Paz Villagra"}>
+	<div class="min-h-screen text-black selection:bg-[#a20007]/20 selection:text-[#a20007] font-sans font-light">
+		
+		{/* Navbar */}
+		<nav class="fixed top-0 left-0 w-full p-8 md:px-12 flex justify-between items-center z-50 mix-blend-difference text-white">
+			<a href="/" class="md:w-1/3 flex items-center hover:opacity-70 transition-opacity">
+				<div class="flex flex-col items-center justify-center translate-y-1">
+					<span class="font-logo text-3xl md:text-4xl text-white leading-none lowercase tracking-normal">pazstudio</span>
+					<span class="font-sans font-black text-[7px] md:text-[9px] tracking-[0.3em] text-white uppercase ml-4 -mt-1">DISEÑADORA</span>
+				</div>
+			</a>
+			<div class="hidden md:flex gap-8 text-sm text-white/60 justify-center md:w-1/3">
+				<a href="/" class="hover:text-[#a20007] transition-colors">Inicio</a>
+				<a href="/work" class="hover:text-[#a20007] transition-colors text-white">Proyectos</a>
+				<a href="/#about" class="hover:text-[#a20007] transition-colors">Sobre Mí</a>
+			</div>
+			<div class="text-sm text-right md:w-1/3">
+				<a href="mailto:mariapazvillagra1@gmail.com" class="hover:text-white/60 transition-colors">Hablemos</a>
+			</div>
+		</nav>
+
+		<main class="w-full">
+			
+			{/* HERO FULLSCREEN (La parte principal que pediste) */}
+			<section class="relative w-full h-screen flex flex-col justify-center items-center overflow-hidden">
+				
+				{/* Imagen de fondo (Cover Image) */}
+				<div class="absolute inset-0 w-full h-full">
+					<img src={project.coverImage} alt={project.title} class={`w-full h-full object-cover scale-105 animate-zoom-out ${project.slug === 'tijuana' ? 'object-top' : 'object-center'}`} />
+					{/* Overlay oscuro para que el texto resalte */}
+					<div class="absolute inset-0 bg-black/80 md:bg-black/70"></div>
+				</div>
+
+				{/* Contenido centrado sobre la imagen */}
+				<div class="relative z-10 w-full max-w-5xl px-6 md:px-12 flex flex-col items-center text-center mt-20">
+					
+					{/* Etiqueta superior */}
+					<div class="animate-fade-in-up" style="animation-delay: 0.2s;">
+						<div class="flex items-center gap-3 text-[10px] md:text-xs font-mono tracking-[0.2em] font-bold uppercase mb-6 md:mb-10 text-white/80"><span class="text-[#a20007] font-bold drop-shadow-lg">)))</span> 
+							<span>[{project.category} / {project.year}]</span>
+						</div>
+					</div>
+					
+					{/* Título Principal */}
+					<div class="animate-fade-in-up" style="animation-delay: 0.4s;">
+						<h1 class="text-5xl md:text-7xl lg:text-[7rem] font-sans font-black tracking-tight mb-8 leading-[0.9] drop-shadow-2xl text-white">
+							{project.title}
+						</h1>
+					</div>
+					
+					{/* Descripción */}
+					<div class="animate-fade-in-up" style="animation-delay: 0.6s;">
+						<p class="text-base md:text-xl text-white/95 leading-relaxed font-medium max-w-2xl drop-shadow-md">
+							{project.description}
+						</p>
+					</div>
+					
+					{/* Bloque de metadatos (Client, Services, Stack) tipo Neiden */}
+					<div class="animate-fade-in-up mt-16 md:mt-24 w-full max-w-3xl" style="animation-delay: 0.8s;">
+						<div class="border-t border-b border-white/20 divide-y divide-white/20 text-left font-mono text-[9px] md:text-[11px] uppercase tracking-widest text-white/90 font-semibold">
+							
+							{project.type && (
+								<div class="flex py-4 hover:text-[#a20007] transition-colors">
+									<div class="w-1/3 text-white/60 font-bold">TIPO DE PROYECTO:</div>
+									<div class="w-2/3">{project.type}</div>
+								</div>
+							)}
+							
+							<div class="flex py-4 hover:text-[#a20007] transition-colors">
+								<div class="w-1/3 text-white/60 font-bold">SERVICIOS:</div>
+								<div class="w-2/3">{project.category}</div>
+							</div>
+							
+							{project.tools && (
+								<div class="flex py-4 hover:text-[#a20007] transition-colors group">
+									<div class="w-1/3 text-white/60 font-bold">STACK / HERRAMIENTAS:</div>
+									<div class="w-2/3 flex flex-wrap items-center gap-4 md:gap-6">
+										{project.tools.toLowerCase().includes('illustrator') && (
+											<div class="flex items-center gap-2" title="Adobe Illustrator">
+												<IllustratorIcon class="w-5 h-5 shrink-0 text-[#FF9A00] group-hover:text-[#a20007] transition-colors" />
+												<span class="hidden md:inline">Illustrator</span>
+											</div>
+										)}
+										{project.tools.toLowerCase().includes('photoshop') && (
+											<div class="flex items-center gap-2" title="Adobe Photoshop">
+												<PhotoshopIcon class="w-5 h-5 shrink-0 text-[#31A8FF] group-hover:text-[#a20007] transition-colors" />
+												<span class="hidden md:inline">Photoshop</span>
+											</div>
+										)}
+										{project.tools.toLowerCase().includes('canva') && (
+											<div class="flex items-center gap-2" title="Canva">
+												<CanvaIcon class="w-5 h-5 shrink-0 text-[#00C4CC] group-hover:text-[#a20007] transition-colors" />
+												<span class="hidden md:inline">Canva</span>
+											</div>
+										)}
+									</div>
+								</div>
+							)}
+							
+							<div class="flex py-4 hover:text-[#a20007] transition-colors">
+								<div class="w-1/3 text-white/60 font-bold">AÑO:</div>
+								<div class="w-2/3">{project.year}</div>
+							</div>
+
+						</div>
+					</div>
+
+				</div>
+			</section>
+
+													{/* Pinned Vertical Slider */}
+			<section class="pinned-gallery w-full h-screen relative bg-white overflow-hidden flex flex-col items-center justify-center">
+				
+				{/* Título flotante */}
+				<div class="absolute top-8 md:top-12 left-0 w-full text-center z-10 opacity-60">
+					<h2 class="text-xs font-mono tracking-[0.4em] uppercase text-black mb-2">Galería del proyecto</h2>
+					<p class="text-sm font-light text-black/50">Haz scroll para ver más</p>
+				</div>
+
+				{/* Contenedor de las fotos apiladas */}
+				<div class="relative w-full max-w-[1200px] aspect-[4/3] md:aspect-[16/9] lg:h-[75vh] lg:aspect-auto mx-auto px-6 md:px-12 mt-8">
+					{[project.coverImage, ...(project.images || [])].map((img, index) => (
+												<div class="gallery-card absolute inset-0 w-full h-full px-6 md:px-12" style={"z-index: " + index + "; perspective: 1200px;"}>
+							<div class="tilt-card w-full h-full rounded-3xl overflow-hidden bg-[#e8e4db] shadow-[0_30px_60px_rgba(0,0,0,0.3)] relative border border-black/10 origin-center" style="transform-style: preserve-3d; will-change: transform;">
+								<img src={img} alt={project.title + " - gallery " + index} class={`w-full h-full object-cover ${project.slug === 'tijuana' ? 'object-top' : 'object-center'}`} />
+								{/* Overlay para oscurecer la imagen que queda atrás */}
+								<div class="card-overlay absolute inset-0 bg-black opacity-0 z-50 pointer-events-none"></div>
+							</div>
+						</div>
+					))}
+				</div>
+
+				{/* Botón flotante */}
+				<div class="absolute bottom-8 md:bottom-12 w-full text-center z-50">
+					<a href="/work" class="inline-flex items-center gap-4 text-xs tracking-widest uppercase text-black hover:text-[#a20007] transition-colors group bg-black/5 px-8 py-4 rounded-full backdrop-blur-md border border-black/10">
+						<span class="w-8 h-[1px] bg-black group-hover:bg-[#a20007] group-hover:w-12 transition-all duration-300"></span>
+						Volver a proyectos
+						<span class="w-8 h-[1px] bg-black group-hover:bg-[#a20007] group-hover:w-12 transition-all duration-300"></span>
+					</a>
+				</div>
+
+			</section></main>
+	</div>
+</Layout>
+
+<style>
+	.animate-fade-in-up {
+		opacity: 0;
+		animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+	}
+	.animate-zoom-out {
+		animation: zoomOut 8s ease-out forwards;
+	}
+	@keyframes fadeInUp {
+		from { opacity: 0; transform: translateY(30px); }
+		to { opacity: 1; transform: translateY(0); }
+	}
+	@keyframes zoomOut {
+		from { transform: scale(1.1); }
+		to { transform: scale(1); }
+	}
+	.scroll-card {
+		will-change: transform, filter;
+	}
+</style>
+
+<script>
+	import gsap from "gsap";
+	import ScrollTrigger from "gsap/ScrollTrigger";
+
+	gsap.registerPlugin(ScrollTrigger);
+
+	document.addEventListener("astro:page-load", () => {
+		const cards = gsap.utils.toArray('.gallery-card');
+		const overlays = gsap.utils.toArray('.card-overlay');
+
+		if (cards.length < 2) return;
+
+		// @ts-ignore
+		gsap.set(cards.slice(1), { yPercent: 115 });
+
+		const tl = gsap.timeline({
+			scrollTrigger: {
+				trigger: ".pinned-gallery",
+				start: "top top",
+				pin: true,
+				scrub: 1,
+				// @ts-ignore
+				end: () => "+=" + (window.innerHeight * cards.length * 0.5), 
+				snap: 1 / (cards.length - 1)
+			}
+		});
+
+		cards.forEach((card, i) => {
+			if (i === 0) return;
+
+			tl.to(cards[i - 1], {
+				scale: 0.95, yPercent: -5,
+				ease: "none"
+			}, i - 1);
+
+			tl.to(overlays[i - 1], {
+				opacity: 0.7,
+				ease: "none"
+			}, i - 1);
+
+			tl.to(card, {
+				yPercent: 0,
+				ease: "none"
+			}, i - 1);
+		});
+
+		// 3D Parallax Mouse Tracking
+		const tiltCards = gsap.utils.toArray('.tilt-card');
+		document.addEventListener("mousemove", (e) => {
+			if (!tiltCards.length) return;
+			const xCenter = window.innerWidth / 2;
+			const yCenter = window.innerHeight / 2;
+			const rotateY = ((e.clientX - xCenter) / 80); 
+			const rotateX = -((e.clientY - yCenter) / 80);
+
+			gsap.to(tiltCards, {
+				rotationX: rotateX,
+				rotationY: rotateY,
+				ease: "power2.out",
+				duration: 0.6,
+				transformPerspective: 1200
+			});
+		});
+	});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

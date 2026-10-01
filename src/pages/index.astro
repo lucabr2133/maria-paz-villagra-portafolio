@@ -1,0 +1,377 @@
+---
+import Layout from '../layouts/Layout.astro';
+import IllustratorIcon from '../components/icons/illustrator.astro';
+import PhotoshopIcon from '../components/icons/photoshop.astro';
+import InDesignIcon from '../components/icons/indesign.astro';
+import CanvaIcon from '../components/icons/canva.astro';
+import CapCutIcon from '../components/icons/capcut.astro';
+---
+
+<Layout title="Paz Villagra | Portfolio">
+		<div class="min-h-screen text-black selection:bg-[#a20007]/20 selection:text-[#a20007] font-sans font-light relative">
+		
+		
+		{/* Navbar Minimalista */}
+		<nav class="fixed top-0 left-0 w-full p-8 md:px-12 flex justify-between items-center z-50 mix-blend-multiply opacity-80">
+			<div class="md:w-1/3 flex items-center">
+				<div class="flex flex-col items-center justify-center translate-y-1">
+					<span class="font-logo text-3xl md:text-4xl text-black leading-none lowercase tracking-normal">pazstudio</span>
+					<span class="font-sans font-black text-[7px] md:text-[9px] tracking-[0.3em] text-black uppercase ml-4 -mt-1">DISEÑADORA</span>
+				</div>
+			</div>
+			<div class="hidden md:flex gap-8 text-sm text-black/60 justify-center md:w-1/3 font-medium">
+				<a href="/" class="hover:text-[#a20007] transition-colors">Inicio</a>
+				<a href="/work" class="hover:text-[#a20007] transition-colors">Proyectos</a>
+				<a href="#about" class="hover:text-[#a20007] transition-colors">Sobre Mí</a>
+			</div>
+			<div class="text-sm text-right md:w-1/3 font-medium">
+				<a href="mailto:mariapazvillagra1@gmail.com" class="hover:text-black/60 transition-colors uppercase tracking-widest text-[10px]">Hablemos</a>
+			</div>
+		</nav>
+
+		{/* Hero Section */}
+				{/* Fancy Hero Section */}
+		<section class="hero-section h-screen flex flex-col justify-center relative px-6 md:px-12 pt-20 overflow-hidden">
+						
+
+			{/* Glow Orb Reactivo al Mouse - HECHO MÁS VISIBLE */}
+			
+
+			<div class="w-full flex flex-col md:pl-24 lg:pl-40 relative z-10">
+				<h1 class="font-sans font-black leading-[0.85] tracking-tighter uppercase flex flex-col">
+					<div class="hero-parallax-wrapper overflow-hidden"><span class="hero-text-line block text-[15vw] md:text-[12vw] origin-bottom-left will-change-transform opacity-0 text-[#a20007]">Paz</span></div>
+					<div class="hero-parallax-wrapper overflow-hidden"><span class="hero-text-line block text-[15vw] md:text-[12vw] origin-bottom-left will-change-transform opacity-0 text-[#a20007]">Villagra</span></div>
+				</h1>
+				
+				<div class="hero-desc will-change-transform opacity-0 mt-8 flex flex-col md:flex-row items-start md:items-center gap-8">
+					<p class="max-w-sm text-black/80 text-sm md:text-base leading-relaxed md:ml-2 font-medium">
+						Estudiante de Diseño Gráfico, creativa y con interés en la comunicación visual, buscando que cada proyecto tenga una identidad propia.
+					</p>
+					
+					{/* Elemento Curvo de la identidad visual */}
+					<svg viewBox="0 0 150 60" fill="none" stroke="#a20007" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" class="w-24 md:w-32 animate-pulse-slow">
+						<path d="M10,30 C30,-10 50,70 70,30 C90,-10 110,70 140,30" />
+					</svg>
+				</div>
+			</div>
+		</section>
+
+		{/* Projects Section */}
+		<section id="work" class="px-6 md:px-12 lg:px-16 py-32 max-w-[1800px] mx-auto">
+			
+			<div class="mb-24 overflow-hidden">
+				<h2 class="section-title text-4xl md:text-7xl lg:text-[5rem] font-sans font-bold tracking-tight uppercase leading-none text-[#a20007]">
+					PROYECTOS DESTACADOS
+				</h2>
+			</div>
+
+									<div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 lg:gap-16 mb-32">
+				
+				{/* Fila 1 */}
+				<a href="/work/youknow-tour" class="project-card group cursor-pointer flex flex-col md:col-span-1">
+					<div class="w-full aspect-[4/5] overflow-hidden relative bg-[#e8e4db]">
+						<img src="/portfolio/YouKnow Tour (1).png" alt="YouKnow Tour" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1.5s] ease-out" />
+					</div>
+					<div class="flex flex-col mt-6 gap-1">
+						<h3 class="text-xl md:text-2xl font-sans font-bold tracking-wide text-[#a20007]">YouKnow Tour</h3>
+						<span class="text-[10px] md:text-xs font-mono tracking-[0.2em] uppercase text-black/50">Afiche y vinilo</span>
+					</div>
+				</a>
+
+				<a href="/work/cosalta" class="project-card group cursor-pointer flex flex-col md:col-span-2">
+					<div class="w-full aspect-[4/3] md:aspect-[16/10] overflow-hidden relative bg-[#e8e4db]">
+						<img src="/portfolio/Cosalta (2).png" alt="Cosalta" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1.5s] ease-out" />
+					</div>
+					<div class="flex flex-col mt-6 gap-1">
+						<h3 class="text-xl md:text-2xl font-sans font-bold tracking-wide text-[#a20007]">Cosalta</h3>
+						<span class="text-[10px] md:text-xs font-mono tracking-[0.2em] uppercase text-black/50">Rediseño de envases</span>
+					</div>
+				</a>
+
+				{/* Fila 2 */}
+				<a href="/work/protectores-noa" class="project-card group cursor-pointer flex flex-col md:col-span-2">
+					<div class="w-full aspect-[4/3] md:aspect-[16/10] overflow-hidden relative bg-[#e8e4db]">
+						<img src="/portfolio/protectoresNoa1.jpeg" alt="Protectores Noa" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1.5s] ease-out" />
+					</div>
+					<div class="flex flex-col mt-6 gap-1">
+						<h3 class="text-xl md:text-2xl font-sans font-bold tracking-wide text-[#a20007]">Protectores del NOA</h3>
+						<span class="text-[10px] md:text-xs font-mono tracking-[0.2em] uppercase text-black/50">Diseño Editorial y Branding</span>
+					</div>
+				</a>
+
+				<a href="/work/tijuana" class="project-card group cursor-pointer flex flex-col md:col-span-1">
+					<div class="w-full aspect-[4/5] overflow-hidden relative bg-[#e8e4db]">
+						<img src="/portfolio/tijuana.jpeg" alt="Tijuana" class="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-[1.5s] ease-out" />
+					</div>
+					<div class="flex flex-col mt-6 gap-1">
+						<h3 class="text-xl md:text-2xl font-sans font-bold tracking-wide text-[#a20007]">Tijuana Showroom</h3>
+						<span class="text-[10px] md:text-xs font-mono tracking-[0.2em] uppercase text-black/50">Diseño de logo</span>
+					</div>
+				</a>
+
+				{/* Fila 3 */}
+				<a href="/work/majo-marketing" class="project-card group cursor-pointer flex flex-col md:col-span-1">
+					<div class="w-full aspect-square overflow-hidden relative bg-[#e8e4db]">
+						<img src="/portfolio/proj5.jpg" alt="Majo" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1.5s] ease-out" />
+					</div>
+					<div class="flex flex-col mt-6 gap-1">
+						<h3 class="text-xl md:text-2xl font-sans font-bold tracking-wide text-[#a20007]">Majo</h3>
+						<span class="text-[10px] md:text-xs font-mono tracking-[0.2em] uppercase text-black/50">Creación de marca</span>
+					</div>
+				</a>
+
+				<a href="/work/traccion-norte" class="project-card group cursor-pointer flex flex-col md:col-span-2">
+					<div class="w-full aspect-[4/3] md:aspect-[16/10] overflow-hidden relative bg-[#e8e4db]">
+						<img src="/portfolio/A3.png" alt="Tracción Norte" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1.5s] ease-out" />
+					</div>
+					<div class="flex flex-col mt-6 gap-1">
+						<h3 class="text-xl md:text-2xl font-sans font-bold tracking-wide text-[#a20007]">Tracción Norte</h3>
+						<span class="text-[10px] md:text-xs font-mono tracking-[0.2em] uppercase text-black/50">Identidad de marca</span>
+					</div>
+				</a>
+
+				{/* Fila 4 - Bunker */}
+				<a href="/work/bunker" class="project-card group cursor-pointer flex flex-col md:col-span-3">
+					<div class="w-full aspect-video md:aspect-[21/9] overflow-hidden relative bg-[#e8e4db]">
+						<img src="/portfolio/bunkerOwl.png" alt="Bunker" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1.5s] ease-out" />
+					</div>
+					<div class="flex flex-col mt-6 gap-1 items-start">
+						<h3 class="text-xl md:text-2xl font-sans font-bold tracking-wide text-[#a20007]">Bunker</h3>
+						<span class="text-[10px] md:text-xs font-mono tracking-[0.2em] uppercase text-black/50">Diseño para redes sociales</span>
+					</div>
+				</a>
+			</div>
+			
+			<div class="mt-20 md:mt-32 w-full flex justify-center pb-8">
+				<a href="/work" class="inline-flex items-center gap-6 px-10 py-5 rounded-full border border-black/20 hover:bg-white hover:text-black hover:scale-105 transition-all duration-500 font-mono text-[10px] md:text-xs tracking-[0.3em] uppercase group">
+					Ver todos los proyectos
+					<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="group-hover:translate-x-2 transition-transform duration-300"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+				</a>
+			</div>
+		</section>
+
+		{/* About Section */}<section id="about" class="px-6 md:px-12 lg:px-16 py-32 max-w-[1800px] mx-auto border-t border-black/20">
+			<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+				
+				{/* Texto */}
+				<div class="flex flex-col">
+					<div class="mb-12 overflow-hidden">
+						<h2 class="section-title text-5xl md:text-7xl font-sans font-black tracking-tight uppercase text-[#a20007]">Sobre Mí</h2>
+					</div>
+					<p class="text-xl md:text-2xl text-black/90 leading-relaxed font-medium mb-16">
+						Soy estudiante de Diseño Gráfico, responsable, creativa y con interés en la comunicación visual. Me gusta explorar diferentes estilos y recursos gráficos, buscando que cada proyecto tenga una identidad propia. Tengo ganas de seguir aprendiendo y desarrollándome en el ámbito del diseño.
+					</p>
+
+					<div class="grid grid-cols-1 md:grid-cols-2 gap-12 text-sm md:text-base">
+						<div class="flex flex-col gap-4">
+							<span class="text-black/40 uppercase tracking-widest text-[10px] font-mono">Formación Académica</span>
+							<p class="font-medium text-black/80 leading-relaxed">
+								<strong class="text-black">Universidad Católica de Salta</strong><br/>
+								Licenciatura en Diseño Gráfico<br/>
+								<span class="text-black/50 text-sm">2024 - Actualidad</span>
+							</p>
+						</div>
+						
+						<div class="flex flex-col gap-4">
+							<span class="text-black/40 uppercase tracking-widest text-[10px] font-mono">Experiencia</span>
+							<ul class="list-disc list-inside text-black/80 space-y-2 font-medium">
+								<li>Desarrollo de piezas e identidades.</li>
+								<li>Creación de contenido para redes.</li>
+								<li>Proyectos de diseño end-to-end.</li>
+							</ul>
+						</div>
+
+												<div class="flex flex-col gap-4 md:col-span-2">
+							<span class="text-black/40 uppercase tracking-widest text-[10px] font-mono">Idiomas</span>
+							<p class="font-medium text-black/80">Español (Nativo) - Inglés (Básico)</p>
+						</div>
+					</div>
+
+					{/* Skills Section */}
+					<div class="flex flex-col gap-6 md:col-span-2 mt-4 border-t border-black/10 pt-12">
+						<span class="text-black/40 uppercase tracking-widest text-[10px] font-mono">Software & Herramientas</span>
+						
+						<div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+							<div class="skill-card flex flex-col items-center justify-center p-6 rounded-2xl border border-black/10 bg-black/5 group hover:border-[#FF9A00]/50 hover:bg-[#FF9A00]/10 hover:-translate-y-2 transition-all duration-300 cursor-default">
+								<IllustratorIcon class="w-12 h-12 rounded-xl transition-transform duration-300 group-hover:scale-110 shadow-sm" />
+								<span class="text-[10px] font-mono tracking-widest text-black/60 uppercase mt-4 font-semibold group-hover:text-[#FF9A00] transition-colors">Illustrator</span>
+							</div>
+
+							<div class="skill-card flex flex-col items-center justify-center p-6 rounded-2xl border border-black/10 bg-black/5 group hover:border-[#31A8FF]/50 hover:bg-[#31A8FF]/10 hover:-translate-y-2 transition-all duration-300 cursor-default">
+								<PhotoshopIcon class="w-12 h-12 rounded-xl transition-transform duration-300 group-hover:scale-110 shadow-sm" />
+								<span class="text-[10px] font-mono tracking-widest text-black/60 uppercase mt-4 font-semibold group-hover:text-[#31A8FF] transition-colors">Photoshop</span>
+							</div>
+
+							<div class="skill-card flex flex-col items-center justify-center p-6 rounded-2xl border border-black/10 bg-black/5 group hover:border-[#FF3366]/50 hover:bg-[#FF3366]/10 hover:-translate-y-2 transition-all duration-300 cursor-default">
+								<InDesignIcon class="w-12 h-12 rounded-xl transition-transform duration-300 group-hover:scale-110 shadow-sm" />
+								<span class="text-[10px] font-mono tracking-widest text-black/60 uppercase mt-4 font-semibold group-hover:text-[#FF3366] transition-colors">InDesign</span>
+							</div>
+
+							<div class="skill-card flex flex-col items-center justify-center p-6 rounded-2xl border border-black/10 bg-black/5 group hover:border-[#00C4CC]/50 hover:bg-[#00C4CC]/10 hover:-translate-y-2 transition-all duration-300 cursor-default">
+								<CanvaIcon class="w-12 h-12 rounded-full transition-transform duration-300 group-hover:scale-110 shadow-sm" />
+								<span class="text-[10px] font-mono tracking-widest text-black/60 uppercase mt-4 font-semibold group-hover:text-[#00C4CC] transition-colors">Canva</span>
+							</div>
+
+							<div class="skill-card flex flex-col items-center justify-center p-6 rounded-2xl border border-black/10 bg-black/5 group hover:border-[#a20007]/50 hover:bg-[#a20007]/10 hover:-translate-y-2 transition-all duration-300 cursor-default">
+								<CapCutIcon class="w-12 h-12 rounded-xl transition-transform duration-300 group-hover:scale-110 shadow-sm" />
+								<span class="text-[10px] font-mono tracking-widest text-black/60 uppercase mt-4 font-semibold group-hover:text-[#a20007] transition-colors">CapCut</span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				{/* Imagen de Perfil */}
+				<div class="w-full aspect-[3/4] lg:h-full lg:aspect-auto lg:min-h-[70vh] relative bg-[#e8e4db] overflow-hidden group">
+					<img src="/profilePhoto.jpeg" alt="Paz Villagra" class="absolute inset-0 w-full h-full object-cover object-center grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-[1.5s] ease-out" />
+				</div>
+
+			</div>
+		</section>
+
+		{/* Contact / Footer CTA */}
+		<section class="border-t border-black/20">
+			<div class="flex flex-col bg-[#e8e4db] p-12 md:py-32 md:px-12 text-center items-center justify-center">
+				<p class="text-[10px] tracking-[0.4em] uppercase text-black/40 mb-8 font-mono">¿Comenzamos un proyecto?</p>
+				<h3 class="text-5xl md:text-8xl font-sans font-black uppercase tracking-tight mb-16 leading-none text-[#a20007]">
+					Demos vida a<br/>tus ideas.
+				</h3>
+				
+				<div class="flex flex-col md:flex-row flex-wrap justify-center gap-12 md:gap-24 font-mono uppercase tracking-widest text-xs">
+					<a href="mailto:mariapazvillagra1@gmail.com" class="hover:text-black/50 transition-colors flex flex-col items-center gap-3">
+						<span class="text-black/40">Email</span>
+						<span class="text-black">mariapazvillagra1@gmail.com</span>
+					</a>
+					<a href="tel:+5493874043600" class="hover:text-black/50 transition-colors flex flex-col items-center gap-3">
+						<span class="text-black/40">Celular</span>
+						<span class="text-black">3874043600</span>
+					</a>
+					
+				</div>
+			</div>
+			
+			<footer class="py-12 text-center text-black/30 font-mono text-[10px] uppercase tracking-widest bg-black">
+				© 2026 Maria Paz Villagra. Todos los derechos reservados.
+			</footer>
+		</section>
+
+	</div>
+</Layout>
+
+<script>
+	import gsap from "gsap";
+	import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+	gsap.registerPlugin(ScrollTrigger);
+
+	document.addEventListener("astro:page-load", () => {
+		// Clean up any stale ScrollTriggers
+		ScrollTrigger.getAll().forEach(t => t.kill());
+
+		// --- Hero Animations ---
+		const tl = gsap.timeline();
+		
+		tl.fromTo(".hero-text-line", 
+			{ yPercent: 120, rotationZ: 5, opacity: 0 },
+			{ yPercent: 0, rotationZ: 0, opacity: 1, duration: 1.2, ease: "power4.out", stagger: 0.15 }
+		)
+		.fromTo(".hero-desc",
+			{ y: 30, opacity: 0 },
+			{ y: 0, opacity: 1, duration: 1, ease: "power3.out" },
+			"-=0.8"
+		)
+		.to(".hero-glow", { opacity: 1, duration: 2 }, "-=1");
+
+		// Parallax Text
+		const moveTextX = gsap.quickTo(".hero-parallax-wrapper", "x", { duration: 0.8, ease: "power2" });
+		const moveTextY = gsap.quickTo(".hero-parallax-wrapper", "y", { duration: 0.8, ease: "power2" });
+
+		window.addEventListener('mousemove', (e) => {
+			const xCenter = window.innerWidth / 2;
+			const yCenter = window.innerHeight / 2;
+			moveTextX((e.clientX - xCenter) * -0.02);
+			moveTextY((e.clientY - yCenter) * -0.02);
+		});
+
+		// Animación de los Títulos de Sección
+		gsap.utils.toArray(".section-title").forEach((title: any) => {
+			gsap.fromTo(title, 
+				{ y: 60, opacity: 0 },
+				{
+					y: 0,
+					opacity: 1,
+					duration: 0.8,
+					ease: "power3.out",
+					scrollTrigger: {
+						trigger: title,
+						start: "top 90%",
+						once: true
+					}
+				}
+			);
+		});
+
+		// Animación Pop-up de las tarjetas al hacer Scroll
+		const projects = gsap.utils.toArray(".project-card");
+		projects.forEach((project: any) => {
+			gsap.fromTo(project, 
+				{ y: 60, opacity: 0 },
+				{
+					y: 0,
+					opacity: 1,
+					duration: 0.8,
+					ease: "power3.out",
+					scrollTrigger: {
+						trigger: project,
+						start: "top 90%",
+						once: true
+					}
+				}
+			);
+		});
+
+		// Animación de las Skills (siempre visibles, animación suave al entrar)
+		gsap.from(".skill-card", {
+			y: 25,
+			duration: 0.5,
+			stagger: 0.06,
+			ease: "power2.out",
+			scrollTrigger: {
+				trigger: "#about",
+				start: "top 85%",
+				once: true
+			}
+		});
+
+		// Refresh triggers dynamically when DOM/images settle
+		setTimeout(() => {
+			ScrollTrigger.refresh();
+		}, 100);
+
+		window.addEventListener("load", () => {
+			ScrollTrigger.refresh();
+		}, { once: true });
+	});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

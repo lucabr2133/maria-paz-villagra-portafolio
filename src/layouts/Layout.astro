@@ -1,0 +1,170 @@
+---
+import '../styles/global.css';
+import SmoothScroll from '../components/SmoothScroll.tsx';
+import { ClientRouter } from 'astro:transitions';
+
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const { 
+	title = "Maria Paz Villagra | Diseñadora Gráfica",
+	description = "Portfolio oficial de María Paz Villagra — Diseñadora Gráfica. Identidad visual, branding, packaging y diseño editorial."
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<ClientRouter />
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:type" content="website" />
+		
+		<!-- Google Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Pacifico&display=swap" rel="stylesheet">
+	</head>
+	<body>
+				{/* Global Glow Orb */}
+		<div id="global-glow" class="fixed w-[60vw] h-[60vw] bg-[#a20007]/20 rounded-full blur-[100px] pointer-events-none mix-blend-screen opacity-0 z-0" style="left: 50%; top: 50%; transform: translate(-50%, -50%);"></div>
+		
+		{/* Global Particles */}
+		<canvas id="global-particles" class="fixed inset-0 w-full h-full pointer-events-none z-40 opacity-70"></canvas>
+
+		<SmoothScroll client:idle>
+			<slot />
+		</SmoothScroll>
+	<script>
+	import gsap from "gsap";
+
+	document.addEventListener("astro:page-load", () => {
+		// --- Global Glow Orb ---
+		const glow = document.getElementById('global-glow');
+		if (glow) {
+			gsap.to(glow, { opacity: 1, duration: 2 });
+			const moveGlowX = gsap.quickTo(glow, "x", { duration: 0.6, ease: "power3" });
+			const moveGlowY = gsap.quickTo(glow, "y", { duration: 0.6, ease: "power3" });
+			
+			window.addEventListener('mousemove', (e) => {
+				const xCenter = window.innerWidth / 2;
+				const yCenter = window.innerHeight / 2;
+				moveGlowX(e.clientX - xCenter);
+				moveGlowY(e.clientY - yCenter);
+			});
+		}
+
+		// --- Global Particles (Polvo + Estela) ---
+		const canvas = document.getElementById('global-particles') as HTMLCanvasElement;
+		if (canvas) {
+			const ctx = canvas.getContext('2d');
+			let width = canvas.width = window.innerWidth;
+			let height = canvas.height = window.innerHeight;
+
+			let particles: any[] = [];
+			for(let i=0; i<80; i++) {
+				particles.push({
+					x: Math.random() * width,
+					y: Math.random() * height,
+					r: Math.random() * 1.5 + 0.5,
+					dx: (Math.random() - 0.5) * 0.3,
+					dy: (Math.random() - 0.5) * 0.5 - 0.2, 
+					isTrail: false
+				});
+			}
+
+			let animationId: number;
+			function animateParticles() {
+				if (!document.getElementById('global-particles')) {
+					cancelAnimationFrame(animationId);
+					return;
+				}
+
+				if (ctx) {
+					ctx.clearRect(0, 0, width, height);
+					
+					for(let i=0; i<particles.length; i++) {
+						let p = particles[i];
+						p.x += p.dx;
+						p.y += p.dy;
+						
+						if (p.isTrail) {
+							p.life -= 1;
+							p.r *= 0.95; 
+							ctx.globalAlpha = Math.max(0, p.life / p.maxLife);
+						} else {
+							if (p.y < 0) p.y = height;
+							if (p.x < 0) p.x = width;
+							if (p.x > width) p.x = 0;
+							ctx.globalAlpha = (Math.sin(Date.now() * 0.001 + p.x) + 1) * 0.2 + 0.1;
+						}
+						
+						ctx.beginPath();
+						ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+						ctx.fillStyle = '#a20007';
+						ctx.fill();
+						
+						if (p.isTrail && (p.life <= 0 || p.r < 0.1)) {
+							particles.splice(i, 1);
+							i--;
+						}
+					}
+					ctx.globalAlpha = 1;
+				}
+				animationId = requestAnimationFrame(animateParticles);
+			}
+			animateParticles();
+
+			window.addEventListener('resize', () => {
+				const c = document.getElementById('global-particles') as HTMLCanvasElement;
+				if(c) {
+					width = c.width = window.innerWidth;
+					height = c.height = window.innerHeight;
+				}
+			});
+
+			window.addEventListener('mousemove', (e) => {
+				if (e.clientY < 0 || e.clientX < 0) return;
+
+				for(let i=0; i<2; i++) {
+					particles.push({
+						x: e.clientX + (Math.random() - 0.5) * 10,
+						y: e.clientY + (Math.random() - 0.5) * 10,
+						r: Math.random() * 2 + 1,
+						dx: (Math.random() - 0.5) * 2,
+						dy: (Math.random() - 0.5) * 2,
+						life: 40,
+						maxLife: 40,
+						isTrail: true
+					});
+				}
+			});
+		}
+	});
+</script>
+</body>
+</html>
+
+<style>
+	html,
+	body {
+		margin: 0;
+		width: 100%;
+		height: 100%;
+	}
+</style>
+
+
+
+
+
+

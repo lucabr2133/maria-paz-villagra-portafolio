@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="100%" height="100%">
+  <defs>
+    <!-- Subtle gradient to give richness and depth to the signature red -->
+    <linearGradient id="pazBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#b80009"/>
+      <stop offset="50%" stop-color="#a20007"/>
+      <stop offset="100%" stop-color="#7d0005"/>
+    </linearGradient>
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#000000" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+
+  <!-- Squircle Base with brand primary color -->
+  <rect width="128" height="128" rx="34" fill="url(#pazBg)"/>
+
+  <!-- Subtle inner border for refined luxury finish -->
+  <rect x="1.5" y="1.5" width="125" height="125" rx="32.5" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-opacity="0.15"/>
+
+  <g filter="url(#softGlow)">
+    <!-- Bold, modern editorial 'P' representing Paz / pazstudio -->
+    <path fill="#f6f5f0" d="M34 26 H62 C76 26 86 35.5 86 49.5 C86 63.5 76 73 62 73 H49.5 V102 C49.5 103.5 48.5 104.5 47 104.5 H36.5 C35 104.5 34 103.5 34 102 Z M49.5 59.5 H61 C68 59.5 72.5 55.5 72.5 49.5 C72.5 43.5 68 39.5 61 39.5 H49.5 Z"/>
+
+    <!-- Signature Identity Wave Stroke in brand cream/white accent -->
+    <path d="M68 85 C76 73 84 99 92 87 C96 81 100 91 106 85" fill="none" stroke="#f6f5f0" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>
