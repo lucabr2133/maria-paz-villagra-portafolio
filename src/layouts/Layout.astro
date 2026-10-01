@@ -33,11 +33,11 @@ const {
 		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Pacifico&display=swap" rel="stylesheet">
 	</head>
 	<body>
-				{/* Global Glow Orb */}
-		<div id="global-glow" class="fixed w-[60vw] h-[60vw] bg-[#a20007]/20 rounded-full blur-[100px] pointer-events-none mix-blend-screen opacity-0 z-0" style="left: 50%; top: 50%; transform: translate(-50%, -50%);"></div>
+		{/* Global Glow Orb (solo desktop para no sobrecargar GPU en celulares) */}
+		<div id="global-glow" class="fixed w-[60vw] h-[60vw] bg-[#a20007]/20 rounded-full blur-[100px] pointer-events-none mix-blend-screen opacity-0 z-0 hidden md:block" style="left: 50%; top: 50%; transform: translate(-50%, -50%);"></div>
 		
-		{/* Global Particles */}
-		<canvas id="global-particles" class="fixed inset-0 w-full h-full pointer-events-none touch-none z-40 opacity-70"></canvas>
+		{/* Global Particles (solo desktop) */}
+		<canvas id="global-particles" class="fixed inset-0 w-full h-full pointer-events-none touch-none z-40 opacity-70 hidden md:block"></canvas>
 
 		<SmoothScroll client:idle>
 			<slot />
@@ -46,6 +46,10 @@ const {
 	import gsap from "gsap";
 
 	function initGlobalLayout() {
+		// En celulares no ejecutar loops pesados de partículas ni glow para ahorrar 100% de CPU y GPU
+		if (window.innerWidth < 768) {
+			return;
+		}
 		// --- Global Glow Orb ---
 		const glow = document.getElementById('global-glow');
 		if (glow) {
