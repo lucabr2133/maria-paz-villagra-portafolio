@@ -181,19 +181,23 @@ import WhatsAppIcon from '../components/icons/whatsapp.astro';
 
 	gsap.registerPlugin(ScrollTrigger);
 
-	document.addEventListener("astro:page-load", () => {
+	function initWorkAnimations() {
 		// Limpieza de triggers previos para navegaciones con View Transitions
 		ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
 
+		// Garantizar que los bloques de texto estén 100% visibles y limpios de cualquier opacity 0 previa
+		const textBlocks = gsap.utils.toArray<HTMLElement>('.project-text-block');
+		textBlocks.forEach((block) => {
+			gsap.set(block, { opacity: 1, y: 0, clearProps: "opacity,transform" });
+		});
+
 		const mm = gsap.matchMedia();
 
-		// PANTALLAS GRANDES (Desktop / Laptop >= 1024px) -> Exactamente como estaba antes
+		// PANTALLAS GRANDES (Desktop / Laptop >= 1024px) -> Parallax de fondo
 		mm.add("(min-width: 1024px)", () => {
 			const cards = gsap.utils.toArray<HTMLElement>('.project-card');
 			cards.forEach((card) => {
 				const wrapper = card.querySelector('.parallax-wrapper');
-				const textBlock = card.querySelector('.project-text-block');
-
 				if (wrapper) {
 					gsap.fromTo(wrapper, 
 						{ y: "-30vh" },
@@ -209,33 +213,14 @@ import WhatsAppIcon from '../components/icons/whatsapp.astro';
 						}
 					);
 				}
-
-				if (textBlock) {
-					gsap.fromTo(textBlock,
-						{ opacity: 0, y: 60 },
-						{
-							opacity: 1,
-							y: 0,
-							ease: "power2.out",
-							scrollTrigger: {
-								trigger: card,
-								start: "top 70%",
-								end: "top 30%",
-								scrub: 0.4
-							}
-						}
-					);
-				}
 			});
 		});
 
-		// CELULARES Y TABLETS (< 1024px) -> Parallax calibrado fluido sin recortar las imágenes
+		// CELULARES Y TABLETS (< 1024px) -> Parallax fluido calibrado sin recortar las imágenes
 		mm.add("(max-width: 1023px)", () => {
 			const cards = gsap.utils.toArray<HTMLElement>('.project-card');
 			cards.forEach((card) => {
 				const wrapper = card.querySelector('.parallax-wrapper');
-				const textBlock = card.querySelector('.project-text-block');
-
 				if (wrapper) {
 					gsap.fromTo(wrapper, 
 						{ yPercent: -10 },
@@ -251,27 +236,10 @@ import WhatsAppIcon from '../components/icons/whatsapp.astro';
 						}
 					);
 				}
-
-				if (textBlock) {
-					gsap.fromTo(textBlock,
-						{ opacity: 0, y: 35 },
-						{
-							opacity: 1,
-							y: 0,
-							duration: 0.8,
-							ease: "power2.out",
-							scrollTrigger: {
-								trigger: card,
-								start: "top 85%",
-								toggleActions: "play none none reverse"
-							}
-						}
-					);
-				}
 			});
 		});
 
-		// Animación del título de la página (idéntica a la original)
+		// Animación del título de la página
 		gsap.from("h1", {
 			y: 100,
 			opacity: 0,
@@ -284,7 +252,18 @@ import WhatsAppIcon from '../components/icons/whatsapp.astro';
 			}
 		});
 
-		ScrollTrigger.refresh();
+		// Refresh triggers tras asentar el DOM
+		requestAnimationFrame(() => {
+			ScrollTrigger.refresh();
+		});
+		setTimeout(() => {
+			ScrollTrigger.refresh();
+		}, 150);
+	}
+
+	document.addEventListener("astro:page-load", initWorkAnimations);
+	document.addEventListener("astro:before-swap", () => {
+		ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
 	});
 </script>
 

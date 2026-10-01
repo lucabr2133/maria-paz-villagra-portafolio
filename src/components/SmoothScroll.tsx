@@ -16,6 +16,7 @@ export default function SmoothScroll({ children }: SmoothScrollProps) {
   useGSAP(() => {
     // 1. Initialize once
     const lenis = new Lenis();
+    (window as any).lenis = lenis;
     
     // Sync lenis scroll with GSAP ScrollTrigger
     lenis.on("scroll", ScrollTrigger.update);
@@ -27,15 +28,29 @@ export default function SmoothScroll({ children }: SmoothScrollProps) {
     gsap.ticker.add(tickHandler);
     gsap.ticker.lagSmoothing(0);
 
-    // 2. Refresh on window load for accurate calculations
-    const handleLoad = () => ScrollTrigger.refresh();
-    window.addEventListener("load", handleLoad);
+    // 2. Handle Astro View Transitions lifecycle
+    const handlePageLoad = () => {
+      lenis.resize();
+      ScrollTrigger.refresh();
+    };
+
+    const handleBeforeSwap = () => {
+      ScrollTrigger.getAll().forEach(t => t.kill());
+    };
+
+    document.addEventListener("astro:before-swap", handleBeforeSwap);
+    document.addEventListener("astro:page-load", handlePageLoad);
+    window.addEventListener("load", handlePageLoad);
+    window.addEventListener("resize", handlePageLoad);
 
     // 3. Cleanup on unmount
     return () => {
       lenis.destroy();
       gsap.ticker.remove(tickHandler);
-      window.removeEventListener("load", handleLoad);
+      document.removeEventListener("astro:before-swap", handleBeforeSwap);
+      document.removeEventListener("astro:page-load", handlePageLoad);
+      window.removeEventListener("load", handlePageLoad);
+      window.removeEventListener("resize", handlePageLoad);
     };
   }, { scope: containerRef });
 

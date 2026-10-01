@@ -356,6 +356,10 @@ const { project } = Astro.props;
 
 		ScrollTrigger.refresh();
 	});
+
+	document.addEventListener("astro:before-swap", () => {
+		ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+	});
 </script>
 
 
